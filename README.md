@@ -1,5 +1,11 @@
 # SRTM-clip-GUI
-A Graphical User Interface for downloading a Digital Elevation Model of a specified area
+A Graphical User Interface for downloading a terrain Digital Elevation Model (DEM) of a specified area on Earth ⛰ 🌎
+
+## About:
+
+Output is saved in the GeoTIFF ".tif" file format.
+
+This program uses the Python [elevation](https://pypi.org/project/elevation/) package internally, and data is sourced from the high-quality [SRTM 30m Global 1 arc second V003](https://lpdaac.usgs.gov/products/srtmgl1nv003/) dataset.
 
 ## Usage:
 

@@ -1,0 +1,4 @@
+pytk
+elevation
+PySimpleGUI
+PyInstaller

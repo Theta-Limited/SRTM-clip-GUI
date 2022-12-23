@@ -3,6 +3,8 @@ import PySimpleGUI as sg
 
 font=(sg.DEFAULT_FONT, 16)
 
+elevation.clean() # Clear cache files, in case they are stale or corrupted
+
 def clip(out_file, bounds):
     # Parse bounds into a tuple of floats
     clipped_data = elevation.clip(output=out_file, bounds=bounds)

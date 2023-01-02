@@ -49,7 +49,7 @@ python3 SRTM_clip_gui.py
 
 Use [PyInstaller](https://pyinstaller.org/en/stable/) to create a distributable executable package:
 ```bash
-pyinstaller -wF SRTM_clip_gui.py
+pyinstaller -wF --collect-all elevation --icon ./assets/SRTM-cliptool-icon.ico SRTM_clip_gui.py
 ```
 
 (note that the distributable will be specific to your operating system and architecture, cross-compiling is not supported)

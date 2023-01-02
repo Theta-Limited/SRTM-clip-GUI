@@ -1,10 +1,25 @@
 import elevation
 import PySimpleGUI as sg
+import sys
+import os
+
+# os.chdir(sys._MEIPASS)
+
+
+if hasattr(sys, '_MEIPASS'):
+    # PyInstaller >= 1.6
+    os.chdir(sys._MEIPASS)
+    os.environ["PATH"] += os.path.sep + sys._MEIPASS
+elif '_MEIPASS2' in os.environ:
+    # PyInstaller < 1.6 (tested on 1.5 only)
+    os.chdir(os.environ['_MEIPASS2'])
+    os.environ["PATH"] += os.path.sep + os.environ['_MEIPASS2']
+else:
+    pass
 
 font=(sg.DEFAULT_FONT, 16)
 
 elevation.clean() # Clear cache files, in case they are stale or corrupted
-
 def clip(out_file, bounds):
     # Parse bounds into a tuple of floats
     clipped_data = elevation.clip(output=out_file, bounds=bounds)

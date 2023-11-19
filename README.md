@@ -1,23 +1,39 @@
 # SRTM-clip-GUI
-A Graphical User Interface for downloading a terrain Digital Elevation Model (DEM) of a specified area on Earth ⛰ 🌎
+
+A Graphical User Interface for downloading a terrain Digital Elevation
+Model (DEM) of a specified area on Earth ⛰ 🌎
 
 ## About:
 
-Output is saved in the GeoTIFF ".tif" file format.
+Output is saved in the GeoTIFF ".tiff" file format.
 
-This program uses the Python [elevation](https://pypi.org/project/elevation/) package internally, and data is sourced from the high-quality [SRTM 30m Global 1 arc second V003](https://lpdaac.usgs.gov/products/srtmgl1nv003/) dataset.
+This program uses the Python to interact with the [Open
+Topography](https://opentopography.org) website to download digital
+elavation model/map using their web API.
+
+Data is sourced from the high-quality Shuttle Radar Topography Mission
+[SRTM GL1](https://portal.opentopography.org/raster?opentopoID=OTSRTM.082015.4326.1)
+Global 30m dataset.
 
 ## Usage:
 
-Enter the Minimum Latitude, Maximum Latitude, Minimum Longitude, and Maximum Longitude of the rectangular area you'd like to capture:
-<img width="768" alt="image of SRTM-clip-GUI running on MacOS. Default bounds 12.35 41.8 12.65 42 for Rome-30m-DEM.tif are already filled in" src="./assets/demo_main.png">
+To generate a digital elevation model/map (DEM), enter the center
+latitude and longitude of the elevation map along with the
+width/height of the surrounding bounding box in meters.  15,000 meters
+squared is typical.  An API key is needed to access the OpenTopography
+web API and is free to obtain by registering with the site.  Depending
+on the platform, you may need to obtain an API key.  You can cut/paste
+the API key into this field or set the environment variable
+OPENTOPOGRAPHY_API_KEY and it will be automatically read in at
+application start time.  <img width="768" alt="image of SRTM-clip-GUI
+running on MacOS." src="./assets/demo_main_webapi.png">
 
-
-Click the "Clip" button, and your GeoTIFF DEM will be downloaded:
-<a href="https://github.com/mkrupczak3/OpenAthena#parsegeotiffpy"><img width="565" alt="Screenshot of a render of the Rome-30m-DEM.tif Digital Elevation Model file, using OpenAthena parseGeoTIFF.py on MacOS" src="./assets/Render_Rome-30m-DEM.png"></a>
+Click the "Fetch" button and your GeoTIFF DEM will automatically be
+downloaded and saved into a file in the current directory.  Filenames
+take the form "DEM_LatLon_s_w_n_e.tiff" where s, w, n, e, are the
+coordinates of the bounding box surrounding the center lat,lon.
 
 ## Install
-**TBD**
 
 ##  Developer environment install:
 
@@ -52,4 +68,5 @@ Use [PyInstaller](https://pyinstaller.org/en/stable/) to create a distributable 
 pyinstaller -wF --collect-all elevation --icon ./assets/SRTM-cliptool-icon.ico SRTM_clip_gui.py
 ```
 
-(note that the distributable will be specific to your operating system and architecture, cross-compiling is not supported)
+(note that the distributable will be specific to your operating system
+and architecture, cross-compiling is not supported)

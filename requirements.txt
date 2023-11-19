@@ -1,4 +1,4 @@
 pytk
-elevation
 PySimpleGUI
 PyInstaller
+requests

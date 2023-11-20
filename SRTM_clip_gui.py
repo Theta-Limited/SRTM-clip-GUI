@@ -114,7 +114,7 @@ def fetchDem():
     diamText = values['diam']
 
     # when building an executable using pyinstaller, don't set apikeystr here
-    # apiKeyStr = values['apiKey']
+    apiKeyStr = values['apiKey']
 
     if latText == '' or lonText == '' or diamText == '' or apiKeyStr == '':
         window['Results'].update("Invalid parameters")
@@ -261,7 +261,11 @@ font=(sg.DEFAULT_FONT, 16)
 layout = [
 
     # when building an executable using pyinstaller, don't show the api key
+<<<<<<< HEAD
 #    [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
+=======
+    [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
+>>>>>>> 96e7de1 (Updated macos .app executables that can be run from GUI.)
 
     [sg.Text('Center Latitude:', font=font), sg.InputText(' 0.0', font=font, key='lat', tooltip='Latitude in decimal format')],
     [sg.Text('Center Longitude:', font=font), sg.InputText(' 0.0', font=font, key='lon', tooltip='Longitude in decimal format')],

@@ -19,7 +19,7 @@ e = 0.0
 diam = 15000
 
 # to build a binary using pyinstaller, hardcode apiKeyStr
-apiKeyStr = "d9fe991567394da8d9573bd3e1571f22"
+apiKeyStr = ""
 
 urlStr = "https://portal.opentopography.org/API/globaldem?"
 demTypeStr = "SRTMGL1"
@@ -240,7 +240,7 @@ if hasattr(sys, '_MEIPASS'):
 elif '_MEIPASS2' in os.environ:
     # PyInstaller < 1.6 (tested on 1.5 only)
     os.chdir(os.environ['_MEIPASS2'])
-    os.environ["PATH"] += os.path.sep + os.environ['_MEIPASS2']
+    os.environ["PATH"] += os.path.sep + os.environ['_MEIPASS2'] 
 else:
     pass
 
@@ -254,18 +254,14 @@ elif __file__:
 # when building an executable using pyinstaller, don't pull apikey
 # from environment var
 
-# apiKeyStr = os.getenv("OPENTOPOGRAPHY_API_KEY","")
+apiKeyStr = os.getenv("OPENTOPOGRAPHY_API_KEY","")
 
 font=(sg.DEFAULT_FONT, 16)
 
 layout = [
 
     # when building an executable using pyinstaller, don't show the api key
-<<<<<<< HEAD
-#    [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
-=======
     [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
->>>>>>> 96e7de1 (Updated macos .app executables that can be run from GUI.)
 
     [sg.Text('Center Latitude:', font=font), sg.InputText(' 0.0', font=font, key='lat', tooltip='Latitude in decimal format')],
     [sg.Text('Center Longitude:', font=font), sg.InputText(' 0.0', font=font, key='lon', tooltip='Longitude in decimal format')],

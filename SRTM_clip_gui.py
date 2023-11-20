@@ -19,7 +19,7 @@ e = 0.0
 diam = 15000
 
 # to build a binary using pyinstaller, hardcode apiKeyStr
-apiKeyStr = ""
+apiKeyStr = "d9fe991567394da8d9573bd3e1571f22"
 
 urlStr = "https://portal.opentopography.org/API/globaldem?"
 demTypeStr = "SRTMGL1"
@@ -112,6 +112,7 @@ def fetchDem():
     latText = values['lat']
     lonText = values['lon']
     diamText = values['diam']
+
     # when building an executable using pyinstaller, don't set apikeystr here
     # apiKeyStr = values['apiKey']
 
@@ -195,7 +196,8 @@ def fetchDem():
        elif rcode == 400:
             window['Results'].update("Bad request: bug in code perhaps?")
        elif rcode == 401:
-            aStr = "Unauthorized: check your API key:" + apiKeyStr
+#           aStr = "Unauthorized: check your API key:" + apiKeyStr
+            aStr = "Unauthorized: check your API key"
             window['Results'].update(aStr)
        elif rcode == 403:
             aStr = "Forbidden: check your API key: XXX"
@@ -252,14 +254,15 @@ elif __file__:
 # when building an executable using pyinstaller, don't pull apikey
 # from environment var
 
-apiKeyStr = os.getenv("OPENTOPOGRAPHY_API_KEY","")
+# apiKeyStr = os.getenv("OPENTOPOGRAPHY_API_KEY","")
 
 font=(sg.DEFAULT_FONT, 16)
 
 layout = [
 
     # when building an executable using pyinstaller, don't show the api key
-    [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
+#    [sg.Text('API Key:', font=font), sg.InputText(apiKeyStr, font=font, key='apiKey', tooltip='Register to get your free OpenTopography API key from https://portal.opentopography.org\nPut that API key here or in OPENTOPOGRAPHY_API_KEY environment variable.')],
+
     [sg.Text('Center Latitude:', font=font), sg.InputText(' 0.0', font=font, key='lat', tooltip='Latitude in decimal format')],
     [sg.Text('Center Longitude:', font=font), sg.InputText(' 0.0', font=font, key='lon', tooltip='Longitude in decimal format')],
     [sg.Text('Height/width (m):', font=font), sg.InputText(' 15000', font=font, key='diam', tooltip='Height/width of the surrounding bounding box in meters.')],
